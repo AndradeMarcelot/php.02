@@ -17,27 +17,30 @@
     <div class="container">
         <h1>Cadastro de Clientes</h1>
         <form action="gravar.php" method="post" class="form-group">
-            <label for="">Nome
-              <input type="text" id="nome" name="nome" class="form-control">
-            </label>
-            <label for="email">Email
-                <input type="email" id="email" name="email" class="form-control">
-            </label>
-            <label for=""> Estado Civil
-                <select name="" id="" class="form-control">
-                    <option value="">-- Selecione --</option>
-                    <option value="">Solteiro</option>
-                    <option value="">Casado</option>
-                    <option value="">Divorciado</option>
-                    <option value="">Viúvo</option>
+            
+            <label for="">Nome </label><input type="text" id="nome" name="nome" class="form-control">
+            <label for="email">Email</label><input type="email" id="email" name="email" class="form-control">
                     
-                </select>
-            </label>
-            <label for="genero"> Sexo
-                <input type="radio" name="genero" value="M"> Masculino
-                <input type="radio" name="genero" value="F"> Feminino
-            </label>  
-            <input type="submit" value="Enviar">        
+            <label for=""> Estado Civil</label>
+            <select name="" id="" class="form-control">
+                <option value="">-- Selecione --</option>
+                <option value="">Solteiro</option>
+                <option value="">Casado</option>
+                <option value="">Divorciado</option>
+                <option value="">Viúvo</option>              
+            </select>
+             
+            <div class="form-check form-check-inline"> 
+                Sexo                    
+                <input type="radio" id="Masculino" name="genero" value="M" class="form-check-input"> <label for="Masculino" class="form-check-label"> Masculino </label>
+            </div> 
+            <div class="form-check form-check-inline">                    
+                <input type="radio" id="Feminino" name="genero" value="F" class="form-check-input"> <label for="Feminino" class="form-check-label"> Feminino </label>
+            </div>          
+            <p>
+                <input type="submit" value="Enviar" class="btn btn-primary">     
+            </p>
+               
         </form>
       
       
