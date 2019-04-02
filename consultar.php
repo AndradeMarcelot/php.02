@@ -16,10 +16,50 @@
     <div class="container">
         <h3>Consultar Clientes</h3>
         <form class="form-group"> <!-- action="consultar.php" method="get" -->
-            <label for="nome"><input type="text" name="nome" id="nome" class="form-control"></label>
+            <label for="nome">Nome:<input type="text" name="nome" id="nome" class="form-control"></label><br>
 
             <input type="submit" value="Buscar" class="btn btn-info">
-        </form>
+        </form><hr>
+        <div class="row">
+            <div class="col">
+                <?php
+                        
+                    if(isset($_GET["nome"]))
+                    {
+                        $nome = $_GET["nome"];
+                        include_once 'conexao.php';
+                        $sql = "SELECT * FROM clientes where nome like '$nome%' order by nome";
+
+                        $result = mysqli_query($con, $sql);
+                        $total = mysqli_num_rows($result);
+
+                        if($total > 0){
+                            echo "<table class='table'>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Estado Civil</th>
+                                    <th>Sexo</th>
+                                </tr>";
+                            while($row = mysqli_fetch_array($result)){
+                                echo "<tr>";
+                                echo "<td>$row[1]</td>";
+                                echo "<td>{$row['email']}</td>";
+                                echo "<td>".$row["estadoCivil"]."</td>";
+                                echo "<td>".$row["sexo"]."</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                            echo "Total de registros: ".$total;
+                        }else{
+                            echo "Não há pessoas com esse nome";
+                        }
+
+                        mysqli_close($con);
+                    }
+                ?> 
+            </div>
+        </div>
     </div>
     
 </body>
